@@ -1,0 +1,7 @@
+.next
+node_modules
+pnpm-lock.yaml
+production-ready
+backend/.venv
+backend/.pytest_cache
+backend/.ruff_cache
