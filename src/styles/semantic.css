@@ -1,0 +1,57 @@
+/*
+ * SEMANTIC TOKENS (light theme)
+ * ─────────────────────────────────────────────────────────────────────────
+ * Role-based tokens: what a color MEANS, not what it looks like.
+ * Every value references a primitive from primitive.css — need a new value?
+ * Add the step there first; never write a raw color here.
+ *
+ * Component-scoped tokens (--sidebar-*) also live here, prefixed with the
+ * component name. Dark-mode overrides live in dark.css (same names,
+ * .dark scope).
+ */
+
+:root {
+  /* base surfaces */
+  --background: var(--gray-0);
+  --foreground: var(--neutral-950);
+  --card: var(--gray-0);
+  --card-foreground: var(--neutral-950);
+  --popover: var(--gray-0);
+  --popover-foreground: var(--neutral-950);
+
+  /* actions */
+  --primary: var(--neutral-900);
+  --primary-foreground: var(--neutral-50);
+  --secondary: var(--neutral-100);
+  --secondary-foreground: var(--neutral-900);
+  --muted: var(--neutral-100);
+  --muted-foreground: var(--neutral-500);
+  --accent: var(--neutral-100);
+  --accent-foreground: var(--neutral-900);
+  --destructive: var(--red-550);
+
+  /* lines & focus */
+  --border: var(--neutral-200);
+  --input: var(--neutral-200);
+  --ring: var(--neutral-400);
+
+  /* data viz */
+  --chart-1: var(--neutral-300);
+  --chart-2: var(--neutral-500);
+  --chart-3: var(--neutral-600);
+  --chart-4: var(--neutral-700);
+  --chart-5: var(--neutral-800);
+
+  /* shape */
+  --radius: 0.625rem;
+
+  /* component: sidebar */
+  --sidebar: var(--neutral-50);
+  --sidebar-foreground: var(--neutral-950);
+  --sidebar-primary: var(--neutral-900);
+  --sidebar-primary-foreground: var(--neutral-50);
+  --sidebar-accent: var(--neutral-100);
+  --sidebar-accent-foreground: var(--neutral-900);
+  --sidebar-border: var(--neutral-200);
+  --sidebar-ring: var(--neutral-400);
+}

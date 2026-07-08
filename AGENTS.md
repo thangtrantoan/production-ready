@@ -10,5 +10,8 @@ This version has breaking changes — APIs, conventions, and file structure may 
 Read `CONTRIBUTING.md` before writing code. Key rules: components never
 import axios directly (component → hook → service → `src/lib/axios.ts`),
 date handling uses `date-fns` only, toasts go through `notify` in
-`src/lib/toast.ts`, and theme colors come from CSS variables in
-`src/styles/globals.css` — never hardcoded in components.
+`src/lib/toast.ts`, and colors come from the token pipeline in `src/styles/`
+(primitive → semantic → tailwind-theme) — components use Tailwind utilities,
+or `var(--semantic-token)` where a class can't reach (chart-lib props);
+never hardcoded colors or raw primitives. Keep files small: soft cap
+~200 lines, one exported component per file.

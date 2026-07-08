@@ -60,14 +60,30 @@ Key modules:
 - `lib/toast.ts` — always call `notify.*`; never import react-toastify in components.
 - `config/site.config.ts` — site name/domain/SEO. `config/features.config.ts` —
   feature flags. Environment values go in `.env.local` (template: `.env.example`).
-- `styles/globals.css` — all theme colors as CSS variables (oklch). Never
-  hardcode colors in components; use Tailwind tokens (`text-muted-foreground`,
-  `var(--chart-2)`, ...).
+- `styles/` — CSS token pipeline, imported in order by `globals.css`:
+  `primitive.css` (raw oklch palette, no meaning) → `semantic.css` (role
+  tokens like `--background`, referencing primitives) → `dark.css` (`.dark`
+  overrides of semantic tokens only) → `tailwind-theme.css` (`@theme inline`
+  maps semantic tokens to utilities). Components consume Tailwind utilities
+  (`text-muted-foreground`); where a class can't reach (chart-lib props,
+  inline styles) use a semantic token directly (`var(--chart-2)`) — never a
+  primitive, never a hardcoded color.
+  `semantic.css`/`dark.css` contain only `var(--primitive)` references — a new
+  value enters through `primitive.css` first. New token: reuse an existing
+  semantic token if one fits the role; create a root token when a role recurs
+  or needs a dark override; component-scoped tokens (`--sidebar-*`) get the
+  component name as prefix and still live in `semantic.css`. Then map it in
+  `tailwind-theme.css` if components need it as a utility.
 
 ## Conventions
 
 - Components: PascalCase export, kebab-case file (`UsersTable` in `users-table.tsx`).
 - Hooks: `useXxx` in `use-xxx.ts`. Services: `xxxService` in `xxx.service.ts`.
+- Keep files small: soft cap ~200 lines, one exported component per file.
+  Past the cap, split — extract subcomponents into sibling files or move
+  logic (state, effects, derived data) into a hook; don't keep growing it.
+- Styling lives in JSX via Tailwind utilities — no per-component `.css`
+  files. Repeated variant class strings belong in `cva()`, not copy-paste.
 - Date/time: **date-fns only** — never add dayjs/moment.
 - `components/ui/` is shadcn-generated; update via the CLI, avoid hand edits.
 - Tests live in `__tests__/` next to the code. Component tests mock the

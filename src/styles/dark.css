@@ -1,0 +1,45 @@
+/*
+ * DARK THEME
+ * ─────────────────────────────────────────────────────────────────────────
+ * Overrides SEMANTIC tokens only — same names as semantic.css, scoped to
+ * `.dark`, values referencing primitives. Never introduce a token here that
+ * has no light value; only override tokens that actually differ in dark
+ * (chart-1..5 currently inherit the light values — add overrides here when
+ * dark charts diverge).
+ */
+
+.dark {
+  /* base surfaces */
+  --background: var(--neutral-950);
+  --foreground: var(--neutral-50);
+  --card: var(--neutral-900);
+  --card-foreground: var(--neutral-50);
+  --popover: var(--neutral-900);
+  --popover-foreground: var(--neutral-50);
+
+  /* actions */
+  --primary: var(--neutral-200);
+  --primary-foreground: var(--neutral-900);
+  --secondary: var(--neutral-800);
+  --secondary-foreground: var(--neutral-50);
+  --muted: var(--neutral-800);
+  --muted-foreground: var(--neutral-400);
+  --accent: var(--neutral-800);
+  --accent-foreground: var(--neutral-50);
+  --destructive: var(--red-350);
+
+  /* lines & focus */
+  --border: var(--white-a10);
+  --input: var(--white-a15);
+  --ring: var(--neutral-500);
+
+  /* component: sidebar */
+  --sidebar: var(--neutral-900);
+  --sidebar-foreground: var(--neutral-50);
+  --sidebar-primary: var(--blue-900);
+  --sidebar-primary-foreground: var(--neutral-50);
+  --sidebar-accent: var(--neutral-800);
+  --sidebar-accent-foreground: var(--neutral-50);
+  --sidebar-border: var(--white-a10);
+  --sidebar-ring: var(--neutral-500);
+}
